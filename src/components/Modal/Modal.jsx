@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { ModalWindow, Overlay } from './Modal.styled';
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ selectedImage, onClose }) => {
+  // console.log(selectedImage);
   useEffect(() => {
     const handleEsc = event => {
       if (event.code === 'Escape') {
@@ -20,13 +21,15 @@ const Modal = ({ children, onClose }) => {
   };
   return (
     <Overlay onClick={handleOverlay}>
-      <ModalWindow>{children}</ModalWindow>
+      <ModalWindow>
+        <img src={selectedImage} alt="selectedImage" />
+      </ModalWindow>
     </Overlay>
   );
 };
 
 export default Modal;
-
+// ////////////////////////////////////////////
 // import { Component } from 'react';
 // import { ModalWindow, Overlay } from './Modal.styled';
 // class Modal extends Component {
